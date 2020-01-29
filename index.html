@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const p = document.querySelector('p');
+    function makeGreen() {
+      p.style.color = "green";
+      p.style.fontSize = '50px';
+    }
+    // Regular
+    // Interpolated
+    const cat = "yin"
+    console.log("one: I am a %s cat", "yang")
+    console.log(`oneA: I am a ${cat}`)
+    // Styled
+    console.log("two: %c I am a larger string", "font-size: 15px; color: orange")
+    // warning!
+    console.warn("oops warn msg w stack trace")
+    // Error :|
+    console.error("oops error msg w stack trace")
+    // Info
+    console.info("a msg: cat sleeps all day")
+    // Testing
+    console.assert(1==1, "msg won't show if assert is true")
+    console.assert(p.classList.contains('ouch'), "wrong!")
+    // clearing
+    //console.clear()
+    // Viewing DOM Elements
+    console.dir(p) //gives you methods
+    // Grouping together --see notes
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`)
+      console.log("something in middle before next dog dropdown")
+      console.groupEnd(`${dog.name}`)
+    
+    })
+    
+    // counting --puts a number after each one
+     console.count("yin")
+     console.count("yin")
+     console.count("yang")
+     console.count("yin")
+    // timing
+    console.time("timer how much time")
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';  
+    fetch(endpoint)
+    .then( r => r.json())
+    .then(data=> console.timeEnd("timer how much time"))
+    console.table(dogs)
+  </script>
+  
+</body>
+</html>
